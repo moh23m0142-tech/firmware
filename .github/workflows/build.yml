@@ -1,4 +1,4 @@
-name: Build Bruce Firmware
+name: Build Nokia Firmware
 on:
   push:
     branches: [ main ]
@@ -12,8 +12,8 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -U platformio
-      - run: pio run -e esp32-s3-devkitc-1-nokia-nokia
+      - run: pio run -e esp32-s3-devkitc-1-nokia
       - uses: actions/upload-artifact@v4
         with:
-          name: firmware
-          path: Bruce-esp32-s3-devkitc-1-nokia-nokia.bin
+          name: firmware-nokia
+          path: Bruce-esp32-s3-devkitc-1-nokia.bin
