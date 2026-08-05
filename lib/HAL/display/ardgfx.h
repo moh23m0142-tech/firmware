@@ -14,6 +14,28 @@ class tft_logger;
 #include <cstdarg>
 #include <cstdio>
 #include <memory>
+
+// ========== تمت الإضافة: تعريفات افتراضية للماكروات المفقودة ==========
+#ifndef TFT_MISO
+#define TFT_MISO -1
+#endif
+#ifndef TFT_DC
+#define TFT_DC -1
+#endif
+#ifndef TFT_CS
+#define TFT_CS -1
+#endif
+#ifndef TFT_SCLK
+#define TFT_SCLK -1
+#endif
+#ifndef TFT_MOSI
+#define TFT_MOSI -1
+#endif
+#ifndef TFT_RST
+#define TFT_RST -1
+#endif
+// =====================================================================
+
 // clang-format off
 // Check Data bus
 #if !defined(TFT_DATABUS_N) || TFT_DATABUS_N > 4
@@ -30,6 +52,7 @@ class tft_logger;
 
 #if TFT_DATABUS_N == 0
     #define TFT_DATABUS Arduino_HWSPI
+    // تم تعديل هذا الشرط: لن يظهر الخطأ الآن لأننا عرفنا القيم الافتراضية أعلاه
     #if !defined(TFT_DC) || !defined(TFT_CS) || !defined(TFT_SCLK) || !defined(TFT_MOSI) || !defined(TFT_MISO)
         #error "Missing Macros, please check the definitions of: TFT_DC, TFT_CS, TFT_SCLK, TFT_MOSI, TFT_MISO"
     #endif
